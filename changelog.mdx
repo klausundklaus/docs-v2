@@ -5,6 +5,62 @@ description: "Latest Releases"
 rss: true
 ---
 
+<Update label="SDK v0.22.0 & Security Fixes" description="February 2026">
+
+### Compressed Token Program v2.3.0
+
+Program hash: `09ea6d03fbef7f40c9a27a2c4c6aa8358662cc8f91e2e86cb2a801683c518027`
+
+We've deployed **light-compressed-token v2.3.0** with security hardening from audit remediations and several bug fixes:
+
+- We've fixed `MintCloseAuthority` handling by adding it as a restricted extension (M-03).
+- We've fixed account-level delegates to correctly compress CTokens (M-02).
+- We've fixed `maxTopUp` interpretation to use units of 1,000 lamports (L-07).
+- We've fixed rent payment validation for CMint decompression, rejecting values below 2 (L-10).
+- We've fixed delegated amount accumulation at decompression, SPL compress transfer fee checks, and frozen light token account closure.
+- We've fixed mint extension checks in CToken-to-CToken decompress and added validation for authority on self-transfer early return.
+- We've fixed duplicate account rejection in `convert_account_infos` and added zero-byte initialization to prevent IDL buffer attacks.
+
+### Light Token v0.22.1
+
+We've fixed the `fee_payer` passthrough in `TransferInterfaceCpi` for the LightToLight path.
+
+### SDK & Client Libraries v0.22.0
+
+We've released v0.22.0 across the Rust SDK and client libraries with security fixes and improvements.
+
+```toml
+[dependencies]
+light-sdk = "0.22.0"
+light-client = "0.22.0"
+light-compressed-token-sdk = "0.22.0"
+
+[dev-dependencies]
+light-program-test = "0.22.0"
+```
+
+- We've enforced canonical bump in ATA verification across token, account, and SDK packages.
+- We've refactored `maxTopUp` to use `u16::MAX` for consistency.
+- We've updated `AccountInterface` to use photon v2 types and simplified `ColdContext`.
+- We've added `MintCloseAuthority` as a restricted extension in `light-token-interface`.
+- We've fixed `store_data` caching incorrect owner in `light-compressed-account`.
+- We've fixed v2 tree rollover balance check in `light-batched-merkle-tree`.
+
+### Photon API v0.55.0
+
+We've replaced the hand-written photon-api client with a [progenitor](https://github.com/oxidecomputer/progenitor)-generated client, added compressed mint support, and updated to photon v2 types.
+
+```toml
+[dependencies]
+photon-api = "0.55.0"
+```
+
+### Registry Program v2.2.0
+
+We've updated **light-registry v2.2.0** with compressible config initialization, light account support via pinocchio, and `maxTopUp` refactored to `u16::MAX`.
+
+</Update>
+
 <Update label="Beta Releases" description="January 2026">
 
 ### ZK Compression CLI
