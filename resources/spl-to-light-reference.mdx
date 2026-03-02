@@ -134,24 +134,6 @@ const signatures = await connection.getSignaturesForAddress(ata);
 
 `@lightprotocol/compressed-token` interface functions match the `@solana/spl-token` API. Use `rpc` (from `createRpc`) instead of `connection`.
 
-#### Instruction API return types
-
-Some instruction builders return a single instruction, others return a 2D array (`TransactionInstruction[][]`) where each inner array is one transaction. The 2D shape handles cases where cold balances need loading in a separate preceding transaction.
-
-| Return type | APIs |
-|:--|:--|
-| `TransactionInstruction` | `createAssociatedTokenAccountInterfaceInstruction`, `createMintToInterfaceInstruction`, `createLightTokenTransferInstruction`, `createWrapInstruction` |
-| `TransactionInstruction[][]` | `createTransferInterfaceInstructions`, `createLoadAtaInstructions`, `createUnwrapInstructions` |
-
-For batch builders, loop over the array and build a transaction from each entry:
-
-```typescript
-for (const ixs of instructions) {
-  const tx = new Transaction().add(...ixs);
-  await sendAndConfirmTransaction(rpc, tx, [payer, owner]);
-}
-```
-
 ### Create mint
 
 Create a mint account with optional token metadata. The light token program sponsors rent-exemption.
