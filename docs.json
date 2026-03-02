@@ -364,6 +364,318 @@
     {
       "source": "/references/anchor-constraints",
       "destination": "https://zkcompression.com/api-reference/anchor"
+    },
+    {
+      "source": "/resources/spl-to-light-reference",
+      "destination": "https://zkcompression.com/api-reference/solana-to-light-comparison"
+    },
+    {
+      "source": "/resources/cli-installation",
+      "destination": "https://zkcompression.com/resources/cli"
+    },
+    {
+      "source": "/references/whitepaper",
+      "destination": "https://zkcompression.com/resources/whitepaper"
+    },
+    {
+      "source": "/references/terminology",
+      "destination": "https://zkcompression.com/resources/terminology"
+    },
+    {
+      "source": "/compressed-pdas/overview",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/overview"
+    },
+    {
+      "source": "/compressed-pdas/guides",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-burn-compressed-accounts",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-burn-compressed-accounts"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-close-compressed-accounts",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-close-compressed-accounts"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-create-compressed-accounts",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-create-compressed-accounts"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-create-nullifier-pdas",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-create-nullifier-pdas"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-reinitialize-compressed-accounts",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-reinitialize-compressed-accounts"
+    },
+    {
+      "source": "/compressed-pdas/guides/how-to-update-compressed-accounts",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/guides/how-to-update-compressed-accounts"
+    },
+    {
+      "source": "/compressed-pdas/program-examples",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/program-examples"
+    },
+    {
+      "source": "/compressed-pdas/solana-attestation-service",
+      "destination": "https://zkcompression.com/pda/compressed-pdas/solana-attestation-service"
+    },
+    {
+      "source": "/compressed-tokens/advanced-guides/airdrop",
+      "destination": "https://zkcompression.com/compressed-tokens/airdrop"
+    },
+    {
+      "source": "/quickstart",
+      "destination": "https://zkcompression.com/light-token/quickstart"
+    },
+    {
+      "source": "/light-token/cookbook/extensions",
+      "destination": "https://zkcompression.com/light-token/extensions"
+    },
+    {
+      "source": "/api-reference/json-rpc-methods/methods",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/overview"
+    },
+    {
+      "source": "/compressed-tokens/advanced-guides",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/advanced-guides/add-wallet-support-for-compressed-tokens",
+      "destination": "https://zkcompression.com/light-token/toolkits/for-wallets"
+    },
+    {
+      "source": "/compressed-tokens/advanced-guides/example-token-distribution",
+      "destination": "https://zkcompression.com/compressed-tokens/airdrop"
+    },
+    {
+      "source": "/compressed-tokens/advanced-guides/use-token-2022-with-compression",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/add-token-pools-to-mint-accounts",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/compress-decompress",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/compress-spl-token-account",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/create-compressed-token-accounts",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/create-mint-with-token-pool",
+      "destination": "https://zkcompression.com/light-token/cookbook/create-mint"
+    },
+    {
+      "source": "/compressed-tokens/guides/delegate",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/merge-compressed-token-accounts",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/mint-compressed-tokens",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/compressed-tokens/guides/transfer-compressed-tokens",
+      "destination": "https://zkcompression.com/compressed-tokens/overview"
+    },
+    {
+      "source": "/references/light-token-terminology",
+      "destination": "https://zkcompression.com/resources/terminology"
+    },
+    {
+      "source": "/light-token/cookbook/update-metadata",
+      "destination": "https://zkcompression.com/light-token/extensions"
+    },
+    {
+      "source": "/learn/c-token-program",
+      "destination": "https://zkcompression.com/learn/light-token-standard"
+    },
+    {
+      "source": "/c-token-program/README",
+      "destination": "https://zkcompression.com/light-token/welcome"
+    },
+    {
+      "source": "/c-token-program/ctoken/close-ctoken-account",
+      "destination": "https://zkcompression.com/light-token/cookbook/close-token-account"
+    },
+    {
+      "source": "/c-token-program/ctoken/create-cata",
+      "destination": "https://zkcompression.com/light-token/cookbook/create-ata"
+    },
+    {
+      "source": "/c-token-program/cmint/create-cmint",
+      "destination": "https://zkcompression.com/light-token/cookbook/create-mint"
+    },
+    {
+      "source": "/c-token-program/ctoken/create-ctoken",
+      "destination": "https://zkcompression.com/light-token/cookbook/create-token-account"
+    },
+    {
+      "source": "/c-token-program/ctoken/extensions",
+      "destination": "https://zkcompression.com/light-token/extensions"
+    },
+    {
+      "source": "/c-token-program/cmint/mint-ctokens",
+      "destination": "https://zkcompression.com/light-token/cookbook/mint-to"
+    },
+    {
+      "source": "/c-token-program/cmint/update-metadata",
+      "destination": "https://zkcompression.com/light-token/cookbook/create-mint"
+    },
+    {
+      "source": "/c-token-program/ctoken-faq",
+      "destination": "https://zkcompression.com/faq"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-payments",
+      "destination": "https://zkcompression.com/light-token/toolkits/for-payments"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-streaming-mints",
+      "destination": "https://zkcompression.com/light-token/toolkits/for-streaming-mints"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-streaming-tokens",
+      "destination": "https://zkcompression.com/light-token/toolkits/for-streaming-tokens"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-wallets",
+      "destination": "https://zkcompression.com/light-token/toolkits/for-wallets"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-dexs",
+      "destination": "https://zkcompression.com/light-token/defi/routers"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-launchpads",
+      "destination": "https://zkcompression.com/light-token/toolkits/overview"
+    },
+    {
+      "source": "/c-token-program/c-token-toolkits/for-trading-apps",
+      "destination": "https://zkcompression.com/light-token/toolkits/overview"
+    },
+    {
+      "source": "/resources/json-rpc-methods",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/overview"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedaccount",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedaccount"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedaccountsbyowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedaccountsbyowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedbalance",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedbalance"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedbalancebyowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedbalancebyowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedminttokenholders",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedminttokenholders"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedtokenaccountbalance",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedtokenaccountbalance"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedtokenaccountbydelegate",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedtokenaccountbydelegate"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedtokenaccountsbyowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedtokenaccountsbyowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressedtokenbalancesbyowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressedtokenbalancesbyowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressionsignaturesforaccount",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressionsignaturesforaccount"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressionsignaturesforaddress",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressionsignaturesforaddress"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressionsignaturesforowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressionsignaturesforowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getcompressionsignaturesfortokenowner",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getcompressionsignaturesfortokenowner"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getindexerhealth",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getindexerhealth"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getindexerslot",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getindexerslot"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getlatestcompressionsignatures",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getlatestcompressionsignatures"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getlatestnonvotingsignatures",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getlatestnonvotingsignatures"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getmultiplecompressedaccounts",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getmultiplecompressedaccounts"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getmultiplenewaddressproofs",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getmultiplenewaddressproofs"
+    },
+    {
+      "source": "/resources/json-rpc-methods/gettransactionwithcompressioninfo",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/gettransactionwithcompressioninfo"
+    },
+    {
+      "source": "/resources/json-rpc-methods/getvalidityproof",
+      "destination": "https://zkcompression.com/api-reference/json-rpc-methods/getvalidityproof"
+    },
+    {
+      "source": "/blog/c-token",
+      "destination": "https://zkcompression.com/blog/light-token"
+    },
+    {
+      "source": "/learn/migration-v1-to-v2",
+      "destination": "https://zkcompression.com/resources/migration-v1-to-v2"
+    },
+    {
+      "source": "/light-token/README",
+      "destination": "https://zkcompression.com/light-token/welcome"
+    },
+    {
+      "source": "/compressed-token-program/README",
+      "destination": "https://zkcompression.com/light-token/welcome"
+    },
+    {
+      "source": "/compressed-token-program/overview",
+      "destination": "https://zkcompression.com/light-token/welcome"
     }
   ]
 }
