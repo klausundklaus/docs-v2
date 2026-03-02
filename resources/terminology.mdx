@@ -288,7 +288,7 @@ When compressed accounts are used as inputs in transactions, their previous stat
 
 ## Nullifier
 
-A nullifier is a unique identifier used to prevent an event from being executed more than once. It acts as a one-way, irreversible proof that a specific resource (such as a payment, note, token, or vote) has already been consumed. To implement nullifiers we need a data structure that ensures every nullifier is only created once and never deleted. On Solana a straight forward way to implement nullifiers is to create a PDA account with the nullifier as seed.
+A nullifier is a unique identifier used to prevent an event from being executed more than once. It acts as a one-way, irreversible proof that a specific resource (such as a payment, note, token, or vote) has already been consumed. To implement nullifiers we need a data structure that ensures every nullifier is only created once and never deleted. On Solana a straightforward way to implement nullifiers is to create a PDA account with the nullifier as seed.
 
 The documentation provides two implementations with rent-free PDA accounts:
 

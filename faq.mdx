@@ -30,6 +30,26 @@ This is dealt with under the hood in a way that doesn’t disrupt the UX of what
 
 </Accordion>
 
+<Accordion title="How can I sponsor rent top-ups for my users?">
+
+Set the `payer` parameter to the sponsor's public key on any Light Token instruction. The sponsor pays SOL for rent top-ups while the user only signs to authorize the transfer.
+
+```typescript
+const ix = createLightTokenTransferInstruction(
+  senderAta,
+  recipientAta,
+  sender.publicKey,
+  amount,
+  sponsor.publicKey, // sponsor pays rent top-ups
+);
+
+await sendAndConfirmTransaction(rpc, tx, [sponsor, sender]);
+```
+
+<Card title="Sponsor rent top-ups guide" icon="chevron-right" color="#0066ff" href="/light-token/toolkits/sponsor-top-ups" horizontal />
+
+</Accordion>
+
 ## Light Token Program
 
 <Accordion title="What is light-token?">

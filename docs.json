@@ -64,6 +64,7 @@
                 "pages": [
                   "light-token/toolkits/for-wallets",
                   "light-token/toolkits/for-privy",
+                  "light-token/toolkits/for-wallet-adapter",
                   "light-token/toolkits/sponsor-top-ups"
                 ]
               },
@@ -227,7 +228,9 @@
           {
             "group": "AI Tools",
             "pages": [
-              "ai-tools/guide",
+              "ai-tools/overview",
+              "ai-tools/agent-skills",
+              "ai-tools/mcp",
               "ai-tools/prompts"
             ]
           }
@@ -323,7 +326,7 @@
     },
     {
       "source": "/learn/ai-tools-guide",
-      "destination": "https://zkcompression.com/ai-tools/guide"
+      "destination": "https://zkcompression.com/ai-tools/overview"
     },
     {
       "source": "/resources/sdks/client-development",
@@ -887,7 +890,11 @@
     },
     {
       "source": "/learn/ask-deepwiki-public",
-      "destination": "https://zkcompression.com/ai-tools/guide"
+      "destination": "https://zkcompression.com/ai-tools/mcp"
+    },
+    {
+      "source": "/ai-tools/guide",
+      "destination": "https://zkcompression.com/ai-tools/overview"
     },
     {
       "source": "/light-token/cookbook/overview",

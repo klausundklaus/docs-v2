@@ -10,6 +10,7 @@ import ToolkitsSetup from "/snippets/setup/toolkits-setup.mdx";
 import RegisterSplMint from "/snippets/setup/register-spl-mint.mdx";
 import AgentSkillPayments from "/snippets/setup/agent-skill-payments.mdx";
 import PaymentsAiPrompt from "/snippets/ai-prompts/toolkits/payments.mdx";
+import SupportFooter from "/snippets/support-footer.mdx";
 
 1. The light-token API matches the SPL-token API almost entirely, and extends their functionality to include the light token program in addition to the SPL-token and Token-2022 programs.
 2. Your users use the same stablecoins, just stored more efficiently.
@@ -97,9 +98,7 @@ import {
 const rpc = createRpc(RPC_ENDPOINT);
 ```
 
-<RegisterSplMint />
-
-### Receive Payments
+## Receive Payments
 
 <Note>
 Find a full code example [here](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/receive.ts).
@@ -119,7 +118,7 @@ loop handles the rare multi-transaction case automatically.
 <Tab title="Instruction">
 
 ```typescript
-import { Transaction } from "@solana/web3.js";
+import { Transaction, sendAndConfirmTransaction } from "@solana/web3.js";
 import {
   createLoadAtaInstructions,
   getAssociatedTokenAddressInterface,
@@ -127,8 +126,8 @@ import {
 
 const ata = getAssociatedTokenAddressInterface(mint, recipient);
 
-// Returns TransactionInstruction[][]. 
-// Each inner array is one transaction. 
+// Returns TransactionInstruction[][].
+// Each inner array is one transaction.
 // Almost always returns just one.
 const instructions = await createLoadAtaInstructions(
   rpc,
@@ -140,8 +139,7 @@ const instructions = await createLoadAtaInstructions(
 
 for (const ixs of instructions) {
   const tx = new Transaction().add(...ixs);
-
-  // sign and send ...
+  await sendAndConfirmTransaction(rpc, tx, [payer, owner]);
 }
 ```
 
@@ -187,7 +185,7 @@ const ata = await getOrCreateAssociatedTokenAccount(
 
 </Accordion>
 
-### Send Payments
+## Send Payments
 
 <Note>
 Find a full code example: [instruction](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/send-instruction.ts) | [action](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/send-action.ts).
@@ -197,11 +195,11 @@ Find a full code example: [instruction](https://github.com/Lightprotocol/example
 <Tab title="Instruction">
 
 ```typescript
-import { Transaction } from "@solana/web3.js";
+import { Transaction, sendAndConfirmTransaction } from "@solana/web3.js";
 import { createTransferInterfaceInstructions } from "@lightprotocol/compressed-token/unified";
 
-// Returns TransactionInstruction[][]. 
-// Each inner array is one transaction. 
+// Returns TransactionInstruction[][].
+// Each inner array is one transaction.
 // Almost always returns just one.
 const instructions = await createTransferInterfaceInstructions(
   rpc,
@@ -214,8 +212,7 @@ const instructions = await createTransferInterfaceInstructions(
 
 for (const ixs of instructions) {
   const tx = new Transaction().add(...ixs);
-
-  // sign and send ...
+  await sendAndConfirmTransaction(rpc, tx, [payer, owner]);
 }
 ```
 
@@ -332,7 +329,7 @@ await transfer(connection, payer, sourceAta, destinationAta, owner, amount);
 </Tab>
 </Tabs>
 
-### Show Balance
+## Show Balance
 
 <Note>
 Find a full code example [here](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/get-balance.ts).
@@ -362,7 +359,7 @@ console.log(account.amount);
 
 </Accordion>
 
-### Transaction History
+## Transaction History
 
 <Note>
 Find a full code example [here](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/get-history.ts).
@@ -386,7 +383,7 @@ const signatures = await connection.getSignaturesForAddress(ata);
 
 </Accordion>
 
-### Wrap from SPL
+## Wrap from SPL
 
 Wrap tokens from SPL/Token-2022 accounts to light-token ATA.
 
@@ -445,7 +442,7 @@ await wrap(rpc, payer, splAta, tokenAta, owner, mint, amount);
 </Tab>
 </Tabs>
 
-### Unwrap to SPL
+## Unwrap to SPL
 
 Unwrap moves the token balance from a light-token account to a SPL-token account.
 Use this to compose with applications that do not yet support light-token.
@@ -495,8 +492,12 @@ await unwrap(rpc, payer, splAta, owner, mint, amount);
 </Tab>
 </Tabs>
 
+<RegisterSplMint />
+
 </Tab>
 <Tab title="AI Prompt">
 <PaymentsAiPrompt />
 </Tab>
 </Tabs>
+
+<SupportFooter />

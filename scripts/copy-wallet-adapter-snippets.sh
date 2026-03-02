@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Script to copy TypeScript code from Light Token Privy examples to docs snippets.
-# Source: examples-light-token/privy/{nodejs,react}
-# Output: snippets/code-snippets/privy/{operation}/{nodejs,react}.mdx
+# Script to copy TypeScript code from wallet adapter React hooks to docs snippets.
+# Source: examples-light-token/toolkits/sign-with-wallet-adapter/react/src/hooks
+# Output: snippets/code-snippets/wallet-adapter/{operation}/react.mdx
 
-NODEJS_SRC="/home/tilo/Workspace/examples-light-token-main/toolkits/sign-with-privy/nodejs/src"
-REACT_SRC="/home/tilo/Workspace/examples-light-token-main/toolkits/sign-with-privy/react/src/hooks"
-SNIPPETS_DIR="/home/tilo/Workspace/docs-main/snippets/code-snippets/privy"
+REACT_SRC="/home/tilo/Workspace/examples-light-token-main/toolkits/sign-with-wallet-adapter/react/src/hooks"
+SNIPPETS_DIR="/home/tilo/Workspace/docs-main/snippets/code-snippets/wallet-adapter"
 
 # Operations to process
 OPERATIONS=("transfer" "receive" "wrap" "unwrap" "balances" "transaction-history")
@@ -26,18 +25,8 @@ for operation in "${OPERATIONS[@]}"; do
     mkdir -p "$SNIPPETS_DIR/$operation"
 done
 
-# Process Node.js operations
-echo "Processing Node.js operations..."
-wrap_typescript "$NODEJS_SRC/transfer.ts" "$SNIPPETS_DIR/transfer/nodejs.mdx"
-wrap_typescript "$NODEJS_SRC/receive.ts" "$SNIPPETS_DIR/receive/nodejs.mdx"
-wrap_typescript "$NODEJS_SRC/wrap.ts" "$SNIPPETS_DIR/wrap/nodejs.mdx"
-wrap_typescript "$NODEJS_SRC/unwrap.ts" "$SNIPPETS_DIR/unwrap/nodejs.mdx"
-wrap_typescript "$NODEJS_SRC/balances.ts" "$SNIPPETS_DIR/balances/nodejs.mdx"
-wrap_typescript "$NODEJS_SRC/get-transaction-history.ts" "$SNIPPETS_DIR/transaction-history/nodejs.mdx"
-
 # Process React operations (hooks)
-echo ""
-echo "Processing React operations..."
+echo "Processing React hooks..."
 wrap_typescript "$REACT_SRC/useTransfer.ts" "$SNIPPETS_DIR/transfer/react.mdx"
 wrap_typescript "$REACT_SRC/useReceive.ts" "$SNIPPETS_DIR/receive/react.mdx"
 wrap_typescript "$REACT_SRC/useWrap.ts" "$SNIPPETS_DIR/wrap/react.mdx"

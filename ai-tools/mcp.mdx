@@ -1,58 +1,11 @@
 ---
-title: "AI Tools Guide"
-description: "Guidance to AI tools when working with ZK Compression. Includes Agent Skill, MCP server, DeepWiki, and AI Search guides."
+title: "MCP"
+description: "Connect AI apps to Light Protocol data sources and tools via the Model Context Protocol (MCP). Includes installation for Claude Code, Codex, Cursor, and more."
 ---
-import InstallAgentSkills from "/snippets/setup/install-agent-skills.mdx";
-
-# For Docs
-
-- **Docs AI Search** - Search documentation with AI in the search bar.
-- **Markdown Export** - Append `.md` to any page URL for raw markdown.
-* **View [`/llms.txt`](https://zkcompression.com/llms.txt)** for an index of the docs - It lists key pages with descriptions
-so agents can navigate to answers quickly.
-
-# For Development
-
-## Agent Skills
-
-View or install [`/skill.md`](https://zkcompression.com/skill.md), a structured capability file that tells agents what they can do
-with Light Protocol and ZK Compression. If you're building with agents, start here.
-
-Install or view dedicated agent skills:
-
-| Use case                                                                                                                                                                                              | Skill                                                |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Build rent-free Solana programs with Light SDK (Anchor or Pinocchio). Includes router integration.                                                                                                    | [light-sdk](https://github.com/Lightprotocol/skills/tree/main/skills/light-sdk)                       |
-| Use Light Token client SDKs (TypeScript and Rust) for mints, ATAs, transfers                                                                                                                         | [light-token-client](https://github.com/Lightprotocol/skills/tree/main/skills/light-token-client)     |
-| Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](https://github.com/Lightprotocol/skills/tree/main/skills/data-streaming)             |
-| Wallets and payment flows with light-token. Includes privy, wallet adapter, mobile wallet adapter signing. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](https://github.com/Lightprotocol/skills/tree/main/skills/payments-and-wallets) |
-| Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](https://github.com/Lightprotocol/skills/tree/main/skills/token-distribution)     |
-| Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](https://github.com/Lightprotocol/skills/tree/main/skills/zk-nullifier)                 |
-| Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                           |
-| For per-user state, DePIN nodes, and infrequently accessed app state with compressed PDAs                                                                                                             | [solana-compression](https://github.com/Lightprotocol/skills/tree/main/skills/solana-compression)     |
-| Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](https://github.com/Lightprotocol/skills/tree/main/skills/ask-mcp)                           |
-
-> View all skills here: https://github.com/Lightprotocol/skills.
-
-All skills are included and are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
-
-<InstallAgentSkills />
-
-## AI Prompts 
-
-<Card
-  title="Find ready-to-use AI prompts for your agent here and all guides. "
-  icon="chevron-right"
-  color="#0066ff"
-  href="/ai-tools/prompts"
-  horizontal
-/>
-
-## MCP
 
 The Model Context Protocol (MCP) is an open standard to connect AI apps to data sources and tools. The DeepWiki MCP server provides access to the Light Protocol repository with its search capabilities (AskDevin).
 
-### Installation
+## Installation
 
 <Tabs>
 <Tab title="Claude Code">
@@ -166,7 +119,7 @@ codex mcp add deepwiki -- npx -y mcp-remote@latest https://mcp.deepwiki.com/mcp
 </Tab>
 </Tabs>
 
-### DeepWiki MCP-Tools
+## DeepWiki MCP-Tools
 
 - **read\_wiki\_structure** - Get a list of documentation topics for a GitHub repository
 
@@ -208,4 +161,3 @@ If you don't have the MCP installed we recommend to use [AskDevin](https://deepw
 </Frame>
 
 </Accordion>
-

@@ -9,6 +9,10 @@ import RegisterSplMint from "/snippets/setup/register-spl-mint.mdx";
 import AgentSkillPayments from "/snippets/setup/agent-skill-payments.mdx";
 import TransferNodejs from "/snippets/code-snippets/privy/transfer/nodejs.mdx";
 import TransferReact from "/snippets/code-snippets/privy/transfer/react.mdx";
+import SignAndSendBatchesHelper from "/snippets/code-snippets/privy/helpers/sign-and-send-batches.mdx";
+import SupportFooter from "/snippets/support-footer.mdx";
+import ReceiveNodejs from "/snippets/code-snippets/privy/receive/nodejs.mdx";
+import ReceiveReact from "/snippets/code-snippets/privy/receive/react.mdx";
 import WrapNodejs from "/snippets/code-snippets/privy/wrap/nodejs.mdx";
 import WrapReact from "/snippets/code-snippets/privy/wrap/react.mdx";
 import UnwrapNodejs from "/snippets/code-snippets/privy/unwrap/nodejs.mdx";
@@ -44,6 +48,11 @@ Privy handles user authentication and wallet management. You build transactions 
       <td>[**Transfer**](#full-code-examples)</td>
       <td>createTransferInstruction()</td>
       <td>createTransferInterfaceInstructions()</td>
+    </tr>
+    <tr>
+      <td>[**Receive**](#full-code-examples)</td>
+      <td>getOrCreateAssociatedTokenAccount()</td>
+      <td>createLoadAtaInstructions()</td>
     </tr>
     <tr>
       <td>[**Wrap from SPL**](#full-code-examples)</td>
@@ -85,6 +94,7 @@ import { createRpc } from "@lightprotocol/stateless.js";
 
 import {
   createTransferInterfaceInstructions,
+  createLoadAtaInstructions,
   createWrapInstruction,
   createUnwrapInstructions,
   getAssociatedTokenAddressInterface,
@@ -100,7 +110,7 @@ const rpc = createRpc(RPC_ENDPOINT);
 ## Sign with Privy
 
 <Note>
-Find complete examples on GitHub: [Node.js](https://github.com/Lightprotocol/examples-light-token/tree/main/privy/nodejs) and [React](https://github.com/Lightprotocol/examples-light-token/tree/main/privy/react).
+Find complete examples on GitHub: [Node.js](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-privy/nodejs) and [React](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-privy/react).
 </Note>
 
 <Tabs>
@@ -120,9 +130,192 @@ automatically.
 <Tabs>
 <Tab title="Node.js">
 <TransferNodejs />
+
+Your app logic may require you to sign all transactions in sequence. Here's how:
+
+<Accordion title="Sign all transactions together">
+
+```typescript
+for (const ixs of instructions) {
+  const tx = new Transaction().add(...ixs);
+  const { blockhash } = await connection.getLatestBlockhash();
+  tx.recentBlockhash = blockhash;
+  tx.feePayer = fromPubkey;
+
+  const { signed_transaction } = await privy.wallets().solana().signTransaction(
+    walletId, {
+      transaction: tx.serialize({ requireAllSignatures: false }),
+      authorization_context: { authorization_private_keys: [authorizationKey] },
+    },
+  ) as any;
+
+  const sig = await connection.sendRawTransaction(
+    Buffer.from(signed_transaction, 'base64'),
+    { skipPreflight: false, preflightCommitment: 'confirmed' },
+  );
+  await connection.confirmTransaction(sig, 'confirmed');
+}
+```
+
+</Accordion>
+
+While almost always you will have only one transfer transaction, you can
+optimize sending in the rare cases where you have multiple transactions.
+Parallelize the loads, confirm them, and then send the transfer instruction
+after.
+
+<Accordion title="Optimize sending (parallel conditional loads, then transfer)">
+
+```typescript
+import {
+  createTransferInterfaceInstructions,
+  sliceLast,
+} from "@lightprotocol/compressed-token/unified";
+
+const instructions = await createTransferInterfaceInstructions(
+  connection, fromPubkey, mint, amount, fromPubkey, recipient
+);
+const { rest: loadInstructions, last: transferInstructions } = sliceLast(instructions);
+// empty = nothing to load, will no-op.
+await Promise.all(
+  loadInstructions.map(async (ixs) => {
+    const tx = new Transaction().add(...ixs);
+    const { blockhash } = await connection.getLatestBlockhash();
+    tx.recentBlockhash = blockhash;
+    tx.feePayer = fromPubkey;
+
+    const { signed_transaction } = await privy.wallets().solana().signTransaction(
+      walletId, {
+        transaction: tx.serialize({ requireAllSignatures: false }),
+        authorization_context: { authorization_private_keys: [authorizationKey] },
+      },
+    ) as any;
+
+    const sig = await connection.sendRawTransaction(
+      Buffer.from(signed_transaction, 'base64'),
+      { skipPreflight: false, preflightCommitment: 'confirmed' },
+    );
+    await connection.confirmTransaction(sig, 'confirmed');
+  })
+);
+
+const transferTx = new Transaction().add(...transferInstructions);
+const { blockhash } = await connection.getLatestBlockhash();
+transferTx.recentBlockhash = blockhash;
+transferTx.feePayer = fromPubkey;
+
+const { signed_transaction } = await privy.wallets().solana().signTransaction(
+  walletId, {
+    transaction: transferTx.serialize({ requireAllSignatures: false }),
+    authorization_context: { authorization_private_keys: [authorizationKey] },
+  },
+) as any;
+
+await connection.sendRawTransaction(
+  Buffer.from(signed_transaction, 'base64'),
+  { skipPreflight: false, preflightCommitment: 'confirmed' },
+);
+```
+
+</Accordion>
+
 </Tab>
 <Tab title="React">
 <TransferReact />
+
+All React hooks use a shared `signAndSendBatches` helper that handles serialization, signing, sending, and confirming for each instruction batch:
+
+<Accordion title="signAndSendBatches helper">
+<SignAndSendBatchesHelper />
+</Accordion>
+
+Your app logic may require you to sign all transactions in sequence. Here's how:
+
+<Accordion title="Sign all transactions together">
+
+```typescript
+for (const ixs of instructions) {
+  const tx = new Transaction().add(...ixs);
+  const { blockhash } = await rpc.getLatestBlockhash();
+  tx.recentBlockhash = blockhash;
+  tx.feePayer = owner;
+
+  const unsigned = tx.serialize({ requireAllSignatures: false });
+  const signed = await signTransaction({ transaction: unsigned, wallet, chain: 'solana:devnet' });
+
+  const sig = await rpc.sendRawTransaction(Buffer.from(signed.signedTransaction), {
+    skipPreflight: false, preflightCommitment: 'confirmed',
+  });
+  await rpc.confirmTransaction(sig, 'confirmed');
+}
+```
+
+</Accordion>
+
+While almost always you will have only one transfer transaction, you can
+optimize sending in the rare cases where you have multiple transactions.
+Parallelize the loads, confirm them, and then send the transfer instruction
+after.
+
+<Accordion title="Optimize sending (parallel conditional loads, then transfer)">
+
+```typescript
+import {
+  createTransferInterfaceInstructions,
+  sliceLast,
+} from "@lightprotocol/compressed-token/unified";
+
+const instructions = await createTransferInterfaceInstructions(
+  rpc, owner, mint, amount, owner, recipient
+);
+const { rest: loadInstructions, last: transferInstructions } = sliceLast(instructions);
+// empty = nothing to load, will no-op.
+await Promise.all(
+  loadInstructions.map(async (ixs) => {
+    const tx = new Transaction().add(...ixs);
+    const { blockhash } = await rpc.getLatestBlockhash();
+    tx.recentBlockhash = blockhash;
+    tx.feePayer = owner;
+
+    const unsigned = tx.serialize({ requireAllSignatures: false });
+    const signed = await signTransaction({ transaction: unsigned, wallet, chain: 'solana:devnet' });
+    const sig = await rpc.sendRawTransaction(Buffer.from(signed.signedTransaction), {
+      skipPreflight: false, preflightCommitment: 'confirmed',
+    });
+    await rpc.confirmTransaction(sig, 'confirmed');
+  })
+);
+
+const transferTx = new Transaction().add(...transferInstructions);
+const { blockhash } = await rpc.getLatestBlockhash();
+transferTx.recentBlockhash = blockhash;
+transferTx.feePayer = owner;
+
+const unsigned = transferTx.serialize({ requireAllSignatures: false });
+const signed = await signTransaction({ transaction: unsigned, wallet, chain: 'solana:devnet' });
+await rpc.sendRawTransaction(Buffer.from(signed.signedTransaction), {
+  skipPreflight: false, preflightCommitment: 'confirmed',
+});
+```
+
+</Accordion>
+
+</Tab>
+</Tabs>
+
+</Tab>
+
+<Tab title="Receive">
+
+Load creates the associated token account (ATA) if needed and loads any compressed state into it.
+Share the ATA address with the sender.
+
+<Tabs>
+<Tab title="Node.js">
+<ReceiveNodejs />
+</Tab>
+<Tab title="React">
+<ReceiveReact />
 </Tab>
 </Tabs>
 
@@ -221,4 +414,6 @@ console.log(result.compressed); // Compressed txs only
 <PrivyAiPrompt />
 </Tab>
 </Tabs>
+
+<SupportFooter />
 

@@ -26,7 +26,7 @@ The nullifier cannot be linked to the action or user.
 For example Zcash uses nullifiers to prevent double spending.
 
 To implement nullifiers we need a data structure that ensures every nullifier is only created once and never deleted.
-On Solana a straight forward way to implement nullifiers is to create a PDA account with the nullifier as seed.
+On Solana a straightforward way to implement nullifiers is to create a PDA account with the nullifier as seed.
 * PDA accounts cannot be closed and permanently lock 890,880 lamports (per nullifier rent-exemption).
 * Compressed PDAs are derived similar to Solana PDAs and cost 15,000 lamports to create (no rent-exemption).
 
@@ -36,7 +36,7 @@ On Solana a straight forward way to implement nullifiers is to create a PDA acco
 | Compressed PDA | 15,000 lamports |
 
 <Info>
-[See full example with tests on on Github](https://github.com/Lightprotocol/program-examples/tree/main/zk/nullifier).
+[See full example with tests on GitHub](https://github.com/Lightprotocol/program-examples/tree/main/zk/nullifier).
 </Info>
 
 ```rust
@@ -82,7 +82,7 @@ pub struct CreateNullifierAccounts<'info> {
 Groth16's small proof size and fast verification (~200k compute units) make it the practical choice for Solana.
 
 <Info>
-Find more information on [docs.rs](https://docs.rs/groth16-solana) and [Github](https://github.com/Lightprotocol/groth16-solana).
+Find more information on [docs.rs](https://docs.rs/groth16-solana) and [GitHub](https://github.com/Lightprotocol/groth16-solana).
 </Info>
 
 ```rust
