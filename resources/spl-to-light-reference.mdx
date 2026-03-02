@@ -5,28 +5,15 @@ description: Side-by-side mapping of every Light Token instruction against its S
 
 import LightCreateConnection from "/snippets/migration-reference/rpc/create-connection.mdx";
 import LightCreateConnectionRust from "/snippets/migration-reference/rpc/create-connection-rust.mdx";
-import LightCreateMintTs from "/snippets/migration-reference/ts/create-mint.mdx";
-import LightCreateAtaTs from "/snippets/migration-reference/ts/create-ata.mdx";
-import LightMintToTs from "/snippets/migration-reference/ts/mint-to.mdx";
-import LightTransferTs from "/snippets/migration-reference/ts/transfer.mdx";
 import LightLoadAtaTs from "/snippets/migration-reference/ts/load-ata.mdx";
-import LightWrapTs from "/snippets/migration-reference/ts/wrap.mdx";
-import LightUnwrapTs from "/snippets/migration-reference/ts/unwrap.mdx";
 import LightGetBalanceTs from "/snippets/migration-reference/ts/get-balance.mdx";
 import LightGetHistoryTs from "/snippets/migration-reference/ts/get-history.mdx";
 import LightApproveTs from "/snippets/migration-reference/ts/approve.mdx";
 import LightRevokeTs from "/snippets/migration-reference/ts/revoke.mdx";
-import LightCreateMintRust from "/snippets/migration-reference/rust/create-mint.mdx";
-import LightCreateAtaRust from "/snippets/migration-reference/rust/create-ata.mdx";
 import LightCreateTokenAccountRust from "/snippets/migration-reference/rust/create-token-account.mdx";
-import LightMintToRust from "/snippets/migration-reference/rust/mint-to.mdx";
-import LightTransferInterfaceRust from "/snippets/migration-reference/rust/transfer-interface.mdx";
-import LightTransferCheckedRust from "/snippets/migration-reference/rust/transfer-checked.mdx";
 import LightBurnRust from "/snippets/migration-reference/rust/burn.mdx";
 import LightFreezeRust from "/snippets/migration-reference/rust/freeze.mdx";
 import LightThawRust from "/snippets/migration-reference/rust/thaw.mdx";
-import LightApproveRust from "/snippets/migration-reference/rust/approve.mdx";
-import LightRevokeRust from "/snippets/migration-reference/rust/revoke.mdx";
 import LightCloseRust from "/snippets/migration-reference/rust/close.mdx";
 import LightWrapRust from "/snippets/migration-reference/rust/wrap.mdx";
 import LightUnwrapRust from "/snippets/migration-reference/rust/unwrap.mdx";
@@ -35,6 +22,7 @@ import LightCreateAtaCpi from "/snippets/migration-reference/cpi/create-ata.mdx"
 import LightCreateTokenAccountCpi from "/snippets/migration-reference/cpi/create-token-account.mdx";
 import LightMintToCpi from "/snippets/migration-reference/cpi/mint-to.mdx";
 import LightTransferCheckedCpi from "/snippets/migration-reference/cpi/transfer-checked.mdx";
+import LightTransferInterfaceCpi from "/snippets/migration-reference/cpi/transfer-interface.mdx";
 import LightBurnCpi from "/snippets/migration-reference/cpi/burn.mdx";
 import LightFreezeCpi from "/snippets/migration-reference/cpi/freeze.mdx";
 import LightThawCpi from "/snippets/migration-reference/cpi/thaw.mdx";
@@ -46,108 +34,152 @@ import LightCreateMintMetadataMacro from "/snippets/migration-reference/macros/c
 import LightCreateAtaMacro from "/snippets/migration-reference/macros/create-ata.mdx";
 import LightCreateTokenAccountMacro from "/snippets/migration-reference/macros/create-token-account.mdx";
 import LightPdaMacro from "/snippets/migration-reference/macros/light-pda.mdx";
+import PromptTsCreateMint from "/snippets/ai-prompts/ts-cookbook/create-mint.mdx";
+import PromptTsCreateAta from "/snippets/ai-prompts/ts-cookbook/create-ata.mdx";
+import PromptTsMintTo from "/snippets/ai-prompts/ts-cookbook/mint-to.mdx";
+import PromptTsTransfer from "/snippets/ai-prompts/ts-cookbook/transfer-interface.mdx";
+import PromptTsApproveRevoke from "/snippets/ai-prompts/ts-cookbook/approve-revoke.mdx";
+import PromptTsWrapUnwrap from "/snippets/ai-prompts/ts-cookbook/wrap-unwrap.mdx";
+import PromptRustCreateMint from "/snippets/ai-prompts/rust-cookbook/create-mint.mdx";
+import PromptRustCreateAta from "/snippets/ai-prompts/rust-cookbook/create-ata.mdx";
+import PromptRustMintTo from "/snippets/ai-prompts/rust-cookbook/mint-to.mdx";
+import PromptRustTransfer from "/snippets/ai-prompts/rust-cookbook/transfer-interface.mdx";
+import PromptRustApproveRevoke from "/snippets/ai-prompts/rust-cookbook/approve-revoke.mdx";
+import PromptRustWrapUnwrap from "/snippets/ai-prompts/rust-cookbook/wrap-unwrap.mdx";
+import PromptRustCreateTokenAccount from "/snippets/ai-prompts/rust-cookbook/create-token-account.mdx";
+import PromptRustBurn from "/snippets/ai-prompts/rust-cookbook/burn.mdx";
+import PromptRustFreezeThaw from "/snippets/ai-prompts/rust-cookbook/freeze-thaw.mdx";
+import PromptRustClose from "/snippets/ai-prompts/rust-cookbook/close-token-account.mdx";
+import PromptCpiCreateMint from "/snippets/ai-prompts/program-cookbook/create-mint-cpi.mdx";
+import PromptCpiCreateAta from "/snippets/ai-prompts/program-cookbook/create-ata-cpi.mdx";
+import PromptCpiCreateTokenAccount from "/snippets/ai-prompts/program-cookbook/create-token-account-cpi.mdx";
+import PromptCpiMintTo from "/snippets/ai-prompts/program-cookbook/mint-to.mdx";
+import PromptCpiTransferChecked from "/snippets/ai-prompts/program-cookbook/transfer-checked.mdx";
+import PromptCpiTransferInterface from "/snippets/ai-prompts/program-cookbook/transfer-interface.mdx";
+import PromptCpiBurn from "/snippets/ai-prompts/program-cookbook/burn.mdx";
+import PromptCpiFreezeThaw from "/snippets/ai-prompts/program-cookbook/freeze-thaw.mdx";
+import PromptCpiApproveRevoke from "/snippets/ai-prompts/program-cookbook/approve-revoke.mdx";
+import PromptCpiClose from "/snippets/ai-prompts/program-cookbook/close-token-account.mdx";
+import PromptMacrosCreateMint from "/snippets/ai-prompts/program-cookbook/create-mint-macros.mdx";
+import PromptMacrosCreateAta from "/snippets/ai-prompts/program-cookbook/create-ata-macros.mdx";
+import PromptMacrosCreateTokenAccount from "/snippets/ai-prompts/program-cookbook/create-token-account-macros.mdx";
+import PromptMacrosLightPda from "/snippets/ai-prompts/program-cookbook/light-pda.mdx";
+import AgentSkillGeneric from "/snippets/setup/agent-skill-generic.mdx";
 
----
 
-## RPC
-
-The Light Token SDK calls Photon RPC methods internally via interface functions like `transferInterface` and `getAtaInterface`. Call them directly for custom indexing, block explorers, or debugging.
-
-> [API reference](/api-reference/json-rpc-methods/overview)
+<AgentSkillGeneric />
 
 ### Create an RPC connection
 
 <Tabs>
 <Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateConnection />
-</Card>
-<Card title="Solana">
-```typescript
+```typescript title="SPL"
 import { Connection } from "@solana/web3.js";
 
 const connection = new Connection(RPC_ENDPOINT);
 ```
-</Card>
 </Columns>
 </Tab>
 <Tab title="Rust">
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateConnectionRust />
-</Card>
-<Card title="Solana">
-```rust
+```rust title="SPL"
 use solana_client::rpc_client::RpcClient;
 
 let client = RpcClient::new(rpc_url.to_string());
 ```
-</Card>
 </Columns>
 </Tab>
 </Tabs>
 
-### Get balance
+<Info>
+The Light Token SDK calls RPC methods internally via interface functions like `transferInterface` and `getAtaInterface`. Call them directly for custom indexing, block explorers, or debugging.
+See [API reference](/api-reference/json-rpc-methods/overview).
+</Info>
 
+<Accordion title="Get balance">
 Fetch the parsed state of a light token account, including hot and cold balances.
 
 > [Guide](/light-token/toolkits/for-payments) |
 > [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/get-balance.ts)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightGetBalanceTs />
-</Card>
-<Card title="SPL">
-```typescript
+```typescript title="SPL"
 import { getAccount } from "@solana/spl-token";
 
 const account = await getAccount(connection, ata);
 
 console.log(account.amount);
 ```
-</Card>
 </Columns>
+</Accordion>
 
-### Transaction history
-
+<Accordion title="Transaction history">
 Fetch merged and deduplicated transaction history across on-chain and compressed transactions.
 
 > [Guide](/light-token/toolkits/for-payments) |
 > [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/get-history.ts)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightGetHistoryTs />
-</Card>
-<Card title="SPL">
-```typescript
+```typescript title="SPL"
 const signatures = await connection.getSignaturesForAddress(ata);
 ```
-</Card>
 </Columns>
+</Accordion>
 
 ---
 
-## TypeScript client
+## Client
 
-`@lightprotocol/compressed-token` interface functions match the `@solana/spl-token` API. Use `rpc` (from `createRpc`) instead of `connection`.
+Both `@lightprotocol/compressed-token` (TypeScript) and `light_token_client` (Rust) match the SPL Token API. 
 
 ### Create mint
 
-Create a mint account with optional token metadata. The light token program sponsors rent-exemption.
+Create a mint account with optional token metadata.
 
 > [Guide](/light-token/cookbook/create-mint) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/create-mint.ts) |
-> [Source](https://github.com/Lightprotocol/light-protocol/blob/main/js/compressed-token/src/v3/actions/create-mint-interface.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/create-mint.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/create_mint.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
-<LightCreateMintTs />
-</Card>
-<Card title="SPL">
-```typescript
+<CodeGroup>
+```typescript Light Action
+import { createMintInterface } from "@lightprotocol/compressed-token";
+
+const { mint } = await createMintInterface(
+  rpc,
+  payer,
+  mintAuthority,
+  freezeAuthority,
+  decimals,
+  mintKeypair
+);
+```
+
+```typescript Light Instruction
+import { createMintInstruction } from "@lightprotocol/compressed-token";
+
+const ix = createMintInstruction(
+  mintSigner.publicKey,
+  decimals,
+  payer.publicKey,
+  freezeAuthority,
+  payer.publicKey,
+  validityProof,
+  addressTreeInfo,
+  stateTreeInfo,
+  tokenMetadata
+);
+```
+</CodeGroup>
+<CodeGroup>
+```typescript SPL Action
 import { createMint } from "@solana/spl-token";
 
 const mint = await createMint(
@@ -158,23 +190,112 @@ const mint = await createMint(
   decimals
 );
 ```
-</Card>
+
+```typescript SPL Instruction
+import { createInitializeMint2Instruction } from "@solana/spl-token";
+
+const ix = createInitializeMint2Instruction(
+  mint.publicKey,
+  decimals,
+  mintAuthority,
+  freezeAuthority,
+  TOKEN_PROGRAM_ID
+);
+```
+</CodeGroup>
 </Columns>
+</Tab>
+<Tab title="Rust">
+<Columns cols={2}>
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::CreateMint;
+
+let (sig, mint) = CreateMint {
+    decimals: 9,
+    freeze_authority: Some(payer.pubkey()),
+    token_metadata: None,
+    seed: None,
+}
+.execute(&mut rpc, &payer, &mint_authority)
+.await?;
+```
+
+```rust Light Instruction
+use light_token::instruction::CreateMint;
+
+let ix = CreateMint::new(
+    params,
+    mint_seed.pubkey(),
+    payer.pubkey(),
+    address_tree.tree,
+    output_queue,
+)
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_token::instruction::initialize_mint;
+
+let ix = initialize_mint(
+    &spl_token::id(),
+    &mint.pubkey(),
+    &mint_authority,
+    Some(&freeze_authority),
+    decimals,
+)?;
+```
+</Columns>
+</Tab>
+</Tabs>
+
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsCreateMint />
+</Tab>
+<Tab title="Rust">
+<PromptRustCreateMint />
+</Tab>
+</Tabs>
+</Accordion>
 
 ### Create associated token account
 
-Create an associated token account. Light-ATAs hold balances of light, SPL, or Token 2022 mints.
+Associated light token accounts can hold balances of light, SPL, or Token 2022 mints.
 
 > [Guide](/light-token/cookbook/create-ata) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/create-ata.ts) |
-> [Source](https://github.com/Lightprotocol/light-protocol/blob/main/js/compressed-token/src/v3/actions/create-ata-interface.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/create-ata.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/create_associated_token_account.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
-<LightCreateAtaTs />
-</Card>
-<Card title="SPL">
-```typescript
+<CodeGroup>
+```typescript Light Action
+import { createAtaInterface } from "@lightprotocol/compressed-token";
+
+const ata = await createAtaInterface(
+  rpc,
+  payer,
+  mint,
+  owner
+);
+```
+
+```typescript Light Instruction
+import { createAssociatedTokenAccountInterfaceInstruction } from "@lightprotocol/compressed-token";
+
+const ix = createAssociatedTokenAccountInterfaceInstruction(
+  payer.publicKey,
+  ata,
+  owner.publicKey,
+  mint
+);
+```
+</CodeGroup>
+<CodeGroup>
+```typescript SPL Action
 import { getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
 
 const ata = await getOrCreateAssociatedTokenAccount(
@@ -184,23 +305,112 @@ const ata = await getOrCreateAssociatedTokenAccount(
   owner
 );
 ```
-</Card>
+
+```typescript SPL Instruction
+import { createAssociatedTokenAccountInstruction } from "@solana/spl-token";
+
+const ix = createAssociatedTokenAccountInstruction(
+  payer.publicKey,
+  ata,
+  owner.publicKey,
+  mint
+);
+```
+</CodeGroup>
 </Columns>
+</Tab>
+<Tab title="Rust">
+<Columns cols={2}>
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::CreateAta;
+
+let (sig, ata) = CreateAta {
+    mint,
+    owner: owner.pubkey(),
+    idempotent: false,
+}
+.execute(&mut rpc, &payer)
+.await?;
+```
+
+```rust Light Instruction
+use light_token::instruction::CreateAssociatedTokenAccount;
+
+let ix = CreateAssociatedTokenAccount::new(
+    payer.pubkey(),
+    owner.pubkey(),
+    mint,
+)
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_associated_token_account::instruction::create_associated_token_account;
+
+let ix = create_associated_token_account(
+    &payer.pubkey(),
+    &owner.pubkey(),
+    &mint,
+    &spl_token::id(),
+);
+```
+</Columns>
+</Tab>
+</Tabs>
+
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsCreateAta />
+</Tab>
+<Tab title="Rust">
+<PromptRustCreateAta />
+</Tab>
+</Tabs>
+</Accordion>
 
 ### Mint tokens
 
-Mint tokens to a destination account. Auto-detects the token program.
+Mint Light, SPL and Token 2022 tokens to a destination account. The SDK auto-detects the token program based on the mint address you pass.
+When no programId is passed, all three token programs are queried in parallel and returns the first successful result. The priority 
+  order is SPL Token → Token 2022 → Light Token.
 
 > [Guide](/light-token/cookbook/mint-to) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/mint-to.ts) |
-> [Source](https://github.com/Lightprotocol/light-protocol/blob/main/js/compressed-token/src/v3/actions/mint-to-interface.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/mint-to.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/mint_to.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
-<LightMintToTs />
-</Card>
-<Card title="SPL">
-```typescript
+<CodeGroup>
+```typescript Light Action
+import { mintToInterface } from "@lightprotocol/compressed-token";
+
+const tx = await mintToInterface(
+  rpc,
+  payer,
+  mint,
+  destination,
+  mintAuthority,
+  amount
+);
+```
+
+```typescript Light Instruction
+import { createMintToInterfaceInstruction } from "@lightprotocol/compressed-token";
+
+const ix = createMintToInterfaceInstruction(
+  mintInterface,
+  destination,
+  authority.publicKey,
+  payer.publicKey,
+  amount
+);
+```
+</CodeGroup>
+<CodeGroup>
+```typescript SPL Action
 import { mintTo } from "@solana/spl-token";
 
 const tx = await mintTo(
@@ -212,23 +422,146 @@ const tx = await mintTo(
   amount
 );
 ```
-</Card>
+
+```typescript SPL Instruction
+import { createMintToInstruction } from "@solana/spl-token";
+
+const ix = createMintToInstruction(
+  mint,
+  destination,
+  mintAuthority.publicKey,
+  amount
+);
+```
+</CodeGroup>
 </Columns>
+</Tab>
+<Tab title="Rust">
+<Columns cols={2}>
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::MintTo;
 
-### Transfer tokens
+let sig = MintTo {
+    mint,
+    destination,
+    amount,
+}
+.execute(&mut rpc, &payer, &authority)
+.await?;
+```
 
-Transfer tokens between accounts. Handles loading cold state, creating the recipient ATA, and transferring in one call. Supports Light-to-Light, SPL-to-Light, and Light-to-SPL transfers.
+```rust Light Instruction
+use light_token::instruction::MintTo;
+
+let ix = MintTo {
+    mint,
+    destination,
+    amount,
+    authority: payer.pubkey(),
+    fee_payer: payer.pubkey(),
+}
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_token::instruction::mint_to;
+
+let ix = mint_to(
+    &spl_token::id(),
+    &mint,
+    &destination,
+    &mint_authority,
+    &[],
+    amount,
+)?;
+```
+</Columns>
+</Tab>
+</Tabs>
+
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsMintTo />
+</Tab>
+<Tab title="Rust">
+<PromptRustMintTo />
+</Tab>
+</Tabs>
+</Accordion>
+
+### Transfer tokens with Transferinterface
+
+The interface detects account types and invokes the right programs.
+
+<table>
+  <tbody>
+    <tr>
+      <td style={{ width: "33%" }}>**Light Token -> Light Token Account**</td>
+      <td>
+        <ul>
+          <li>Transfers tokens between Light Token accounts</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>**SPL token -> Light Token Account**</td>
+      <td>
+        <ul>
+          <li>Transfers SPL tokens to Light Token accounts</li>
+          <li>SPL tokens are locked in interface PDA</li>
+          <li>Tokens are minted to Light Token account</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>**Light Token -> SPL Account**</td>
+      <td>
+        <ul>
+          <li>Releases SPL tokens from interface PDA to SPL account</li>
+          <li>Burns tokens in source Light Token account</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 > [Guide](/light-token/cookbook/transfer-interface) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/transfer-interface.ts) |
-> [Source](https://github.com/Lightprotocol/light-protocol/blob/main/js/compressed-token/src/v3/actions/transfer-interface.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/transfer-interface.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/transfer_interface.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
-<LightTransferTs />
-</Card>
-<Card title="SPL">
-```typescript
+<CodeGroup>
+```typescript Light Action
+import { transferInterface } from "@lightprotocol/compressed-token/unified";
+
+const tx = await transferInterface(
+  rpc,
+  payer,
+  sourceAta,
+  mint,
+  recipient,
+  owner,
+  amount
+);
+```
+
+```typescript Light Instruction
+import { createLightTokenTransferInstruction } from "@lightprotocol/compressed-token";
+
+const ix = createLightTokenTransferInstruction(
+  source,
+  destination,
+  owner.publicKey,
+  amount
+);
+```
+</CodeGroup>
+<CodeGroup>
+```typescript SPL Action
 import { transfer } from "@solana/spl-token";
 
 const tx = await transfer(
@@ -240,26 +573,145 @@ const tx = await transfer(
   amount
 );
 ```
-</Card>
-</Columns>
 
-<Accordion title="Unify fragmented token balances">
-When a user receives tokens from multiple senders, each compressed account is stored separately. Use `createTransferInterfaceInstructions` with `sliceLast` to load all fragments in parallel before transferring.
+```typescript SPL Instruction
+import { createTransferInstruction } from "@solana/spl-token";
+
+const ix = createTransferInstruction(
+  sourceAta,
+  destinationAta,
+  owner.publicKey,
+  amount
+);
+```
+</CodeGroup>
+</Columns>
+</Tab>
+<Tab title="Rust">
+<Columns cols={2}>
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::TransferInterface;
+
+let sig = TransferInterface {
+    source,
+    mint,
+    destination,
+    amount,
+    decimals,
+    spl_token_program: None,
+    restricted: false,
+}
+.execute(&mut rpc, &payer, &authority)
+.await?;
+```
+
+```rust Light Instruction
+use light_token::instruction::TransferInterface;
+
+let ix = TransferInterface {
+    source,
+    destination,
+    amount,
+    decimals,
+    authority: payer.pubkey(),
+    payer: payer.pubkey(),
+    mint,
+    spl_interface: None,
+    source_owner: LIGHT_TOKEN_PROGRAM_ID,
+    destination_owner: LIGHT_TOKEN_PROGRAM_ID,
+}
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_token::instruction::transfer;
+
+let ix = transfer(
+    &spl_token::id(),
+    &source,
+    &destination,
+    &authority,
+    &[],
+    amount,
+)?;
+```
+</Columns>
+</Tab>
+</Tabs>
+
+For payment flows, `createTransferInterfaceInstructions` returns
+`TransactionInstruction[][]` — handles loading cold state and
+transferring in one call:
 
 > [Guide](/light-token/toolkits/for-payments) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/send.ts)
+> [Example (instruction)](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/send-instruction.ts) |
+> [Example (action)](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments-and-wallets/send-action.ts)
 
 ```typescript
+import { Transaction } from "@solana/web3.js";
 import { createTransferInterfaceInstructions } from "@lightprotocol/compressed-token/unified";
-import { sliceLast } from "@lightprotocol/stateless.js";
 
+// Returns TransactionInstruction[][].
+// Each inner array is one transaction.
+// Almost always returns just one.
 const instructions = await createTransferInterfaceInstructions(
-  rpc, payer.publicKey, mint, amount, owner.publicKey, recipient
+  rpc,
+  payer.publicKey,
+  mint,
+  amount,
+  owner.publicKey,
+  recipient
 );
 
-const { rest: loadInstructions, last: transferInstructions } = sliceLast(instructions);
+for (const ixs of instructions) {
+  const tx = new Transaction().add(...ixs);
 
-// Load all compressed accounts in parallel
+  // sign and send ...
+}
+```
+
+Your app logic may require you to create a single sign request for your user:
+
+<Accordion title="Sign all transactions together">
+
+```typescript
+const transactions = instructions.map((ixs) => new Transaction().add(...ixs));
+
+// One approval for all
+const signed = await wallet.signAllTransactions(transactions);
+
+for (const tx of signed) {
+  // send...
+  await sendAndConfirmTransaction(rpc, tx);
+}
+```
+
+</Accordion>
+
+While almost always you will have only one transfer transaction, you can
+optimize sending in the rare cases where you have multiple transactions.
+Parallelize the loads, confirm them, and then send the transfer instruction
+after.
+
+<Accordion title="Optimize sending (parallel conditional loads, then transfer)">
+
+```typescript
+import {
+  createTransferInterfaceInstructions,
+  sliceLast,
+} from "@lightprotocol/compressed-token/unified";
+
+const instructions = await createTransferInterfaceInstructions(
+  rpc,
+  payer.publicKey,
+  mint,
+  amount,
+  owner.publicKey,
+  recipient
+);
+const { rest: loadInstructions, last: transferInstructions } = sliceLast(instructions);
+// empty = nothing to load, will no-op.
 await Promise.all(
   loadInstructions.map((ixs) => {
     const tx = new Transaction().add(...ixs);
@@ -268,11 +720,11 @@ await Promise.all(
   })
 );
 
-// Then transfer
 const transferTx = new Transaction().add(...transferInstructions);
 transferTx.sign(payer, owner);
 await sendAndConfirmTransaction(rpc, transferTx);
 ```
+
 </Accordion>
 
 <Accordion title="Load ATA">
@@ -285,15 +737,75 @@ Load creates the ATA if needed and loads any compressed state into it. Light Tok
 <LightLoadAtaTs />
 </Accordion>
 
-<Accordion title="Wrap and unwrap">
-**Wrap** moves tokens from an SPL/Token 2022 account to a Light Token ATA (hot balance). **Unwrap** moves tokens back to SPL — use this to compose with applications that do not yet support light-token.
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsTransfer />
+</Tab>
+<Tab title="Rust">
+<PromptRustTransfer />
+</Tab>
+</Tabs>
+</Accordion>
+
+### Wrap and unwrap
+
+**Wrap** moves tokens from an SPL/Token 2022 account to a Light Token associated token account
+ (hot balance). **Unwrap** moves tokens back to SPL. Use this to compose with applications that do not yet support light-token.
 
 > [Guide](/light-token/cookbook/wrap-unwrap) |
 > [Example (wrap)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/wrap.ts) |
 > [Example (unwrap)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/unwrap.ts)
 
-<LightWrapTs />
-<LightUnwrapTs />
+<Tabs>
+<Tab title="TypeScript">
+<CodeGroup>
+```typescript Action
+import { getAssociatedTokenAddressSync } from "@solana/spl-token";
+import {
+  wrap,
+  unwrap,
+  getAssociatedTokenAddressInterface,
+} from "@lightprotocol/compressed-token/unified";
+
+const splAta = getAssociatedTokenAddressSync(mint, owner.publicKey);
+const tokenAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
+
+// Wrap: SPL → Light
+await wrap(rpc, payer, splAta, tokenAta, owner, mint, amount);
+
+// Unwrap: Light → SPL
+await unwrap(rpc, payer, splAta, owner, mint, amount);
+```
+
+```typescript Instruction
+import { createWrapInstruction, createUnwrapInstruction } from "@lightprotocol/compressed-token";
+
+const wrapIx = createWrapInstruction(
+  source, destination, owner.publicKey, mint, amount, splInterfaceInfo, decimals
+);
+
+const unwrapIx = createUnwrapInstruction(
+  source, destination, owner.publicKey, mint, amount, splInterfaceInfo, decimals
+);
+```
+</CodeGroup>
+</Tab>
+<Tab title="Rust">
+<LightWrapRust />
+<LightUnwrapRust />
+</Tab>
+</Tabs>
+
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsWrapUnwrap />
+</Tab>
+<Tab title="Rust">
+<PromptRustWrapUnwrap />
+</Tab>
+</Tabs>
 </Accordion>
 
 ### Approve delegate
@@ -301,14 +813,14 @@ Load creates the ATA if needed and loads any compressed state into it. Light Tok
 Approve a delegate to spend tokens up to a specified amount.
 
 > [Guide](/light-token/cookbook/approve-revoke) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/delegate-approve.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/delegate-approve.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/approve.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
 <LightApproveTs />
-</Card>
-<Card title="SPL">
-```typescript
+```typescript title="SPL"
 import { approve } from "@solana/spl-token";
 
 const tx = await approve(
@@ -320,22 +832,77 @@ const tx = await approve(
   amount
 );
 ```
-</Card>
 </Columns>
+</Tab>
+<Tab title="Rust">
+<Columns cols={2}>
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::Approve;
+
+let sig = Approve {
+    token_account: ata,
+    delegate: delegate.pubkey(),
+    amount,
+    owner: None,
+}
+.execute(&mut rpc, &payer)
+.await?;
+```
+
+```rust Light Instruction
+use light_token::instruction::Approve;
+
+let ix = Approve {
+    token_account: ata,
+    delegate: delegate.pubkey(),
+    owner: payer.pubkey(),
+    amount,
+    fee_payer: payer.pubkey(),
+}
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_token::instruction::approve;
+
+let ix = approve(
+    &spl_token::id(),
+    &source,
+    &delegate,
+    &owner,
+    &[],
+    amount,
+)?;
+```
+</Columns>
+</Tab>
+</Tabs>
+
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsApproveRevoke />
+</Tab>
+<Tab title="Rust">
+<PromptRustApproveRevoke />
+</Tab>
+</Tabs>
+</Accordion>
 
 ### Revoke delegate
 
 Remove all delegate permissions.
 
 > [Guide](/light-token/cookbook/approve-revoke) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/delegate-revoke.ts)
+> [Example (TS)](https://github.com/Lightprotocol/examples-light-token/blob/main/typescript-client/actions/delegate-revoke.ts) |
+> [Example (Rust)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/revoke.rs)
 
+<Tabs>
+<Tab title="TypeScript">
 <Columns cols={2}>
-<Card title="Light Token">
 <LightRevokeTs />
-</Card>
-<Card title="SPL">
-```typescript
+```typescript title="SPL"
 import { revoke } from "@solana/spl-token";
 
 const tx = await revoke(
@@ -345,76 +912,66 @@ const tx = await revoke(
   owner
 );
 ```
-</Card>
 </Columns>
-
----
-
-## Rust client
-
-`light_token_client` uses builder structs with `.instruction()` or `.execute()`. All instructions map 1:1 to `spl_token::instruction::*`.
-
-### Create mint
-
-> [Guide](/light-token/cookbook/create-mint) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/create_mint.rs) |
-> [Source](https://docs.rs/light-token-client)
-
+</Tab>
+<Tab title="Rust">
 <Columns cols={2}>
-<Card title="Light Token">
-<LightCreateMintRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_token::instruction::initialize_mint;
+<CodeGroup>
+```rust Light Action
+use light_token_client::actions::Revoke;
 
-let ix = initialize_mint(
+let sig = Revoke {
+    token_account: ata,
+    owner: None,
+}
+.execute(&mut rpc, &payer)
+.await?;
+```
+
+```rust Light Instruction
+use light_token::instruction::Revoke;
+
+let ix = Revoke {
+    token_account: ata,
+    owner: payer.pubkey(),
+    fee_payer: payer.pubkey(),
+}
+.instruction()?;
+```
+</CodeGroup>
+```rust title="SPL"
+use spl_token::instruction::revoke;
+
+let ix = revoke(
     &spl_token::id(),
-    &mint.pubkey(),
-    &mint_authority,
-    Some(&freeze_authority),
-    decimals,
+    &source,
+    &owner,
+    &[],
 )?;
 ```
-</Card>
 </Columns>
+</Tab>
+</Tabs>
 
-### Create associated token account
-
-> [Guide](/light-token/cookbook/create-ata) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/create_associated_token_account.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Columns cols={2}>
-<Card title="Light Token">
-<LightCreateAtaRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_associated_token_account::instruction::create_associated_token_account;
-
-let ix = create_associated_token_account(
-    &payer.pubkey(),
-    &owner.pubkey(),
-    &mint,
-    &spl_token::id(),
-);
-```
-</Card>
-</Columns>
+<Accordion title="AI prompt">
+<Tabs>
+<Tab title="TypeScript">
+<PromptTsApproveRevoke />
+</Tab>
+<Tab title="Rust">
+<PromptRustApproveRevoke />
+</Tab>
+</Tabs>
+</Accordion>
 
 ### Create token account
 
 > [Guide](/light-token/cookbook/create-token-account) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/create_token_account.rs) |
-> [Source](https://docs.rs/light-token-client)
+> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/create_token_account.rs)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateTokenAccountRust />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::initialize_account;
 
 let ix = initialize_account(
@@ -424,107 +981,22 @@ let ix = initialize_account(
     &owner,
 )?;
 ```
-</Card>
 </Columns>
 
-### Mint tokens
-
-> [Guide](/light-token/cookbook/mint-to) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/mint_to.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Columns cols={2}>
-<Card title="Light Token">
-<LightMintToRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_token::instruction::mint_to;
-
-let ix = mint_to(
-    &spl_token::id(),
-    &mint,
-    &destination,
-    &mint_authority,
-    &[],
-    amount,
-)?;
-```
-</Card>
-</Columns>
-
-### Transfer (interface)
-
-Unified interface that routes across Light Token, SPL, and Token 2022 accounts.
-
-> [Guide](/light-token/cookbook/transfer-interface) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/transfer_interface.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Columns cols={2}>
-<Card title="Light Token">
-<LightTransferInterfaceRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_token::instruction::transfer;
-
-let ix = transfer(
-    &spl_token::id(),
-    &source,
-    &destination,
-    &authority,
-    &[],
-    amount,
-)?;
-```
-</Card>
-</Columns>
-
-### Transfer (checked)
-
-Transfer with decimal validation.
-
-> [Guide](/light-token/cookbook/transfer-checked) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/transfer_checked.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Columns cols={2}>
-<Card title="Light Token">
-<LightTransferCheckedRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_token::instruction::transfer_checked;
-
-let ix = transfer_checked(
-    &spl_token::id(),
-    &source,
-    &mint,
-    &destination,
-    &authority,
-    &[],
-    amount,
-    decimals,
-)?;
-```
-</Card>
-</Columns>
+<Accordion title="AI prompt">
+<PromptRustCreateTokenAccount />
+</Accordion>
 
 ### Burn
 
 Permanently destroy tokens and reduce mint supply.
 
 > [Guide](/light-token/cookbook/burn) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/burn.rs) |
-> [Source](https://docs.rs/light-token-client)
+> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/burn.rs)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightBurnRust />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::burn;
 
 let ix = burn(
@@ -536,8 +1008,11 @@ let ix = burn(
     amount,
 )?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptRustBurn />
+</Accordion>
 
 ### Freeze and thaw
 
@@ -545,16 +1020,14 @@ Freeze prevents all transfers, burns, or closes. Only the freeze authority can f
 
 > [Guide](/light-token/cookbook/freeze-thaw) |
 > [Example (freeze)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/freeze.rs) |
-> [Example (thaw)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/thaw.rs) |
-> [Source](https://docs.rs/light-token-client)
+> [Example (thaw)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/thaw.rs)
 
 <Columns cols={2}>
-<Card title="Light Token">
+<div>
 <LightFreezeRust />
 <LightThawRust />
-</Card>
-<Card title="SPL">
-```rust
+</div>
+```rust title="SPL"
 use spl_token::instruction::{freeze_account, thaw_account};
 
 let ix = freeze_account(
@@ -573,60 +1046,22 @@ let ix = thaw_account(
     &[],
 )?;
 ```
-</Card>
 </Columns>
 
-### Approve and revoke
-
-Approve a delegate or remove all delegate permissions.
-
-> [Guide](/light-token/cookbook/approve-revoke) |
-> [Example (approve)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/approve.rs) |
-> [Example (revoke)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/revoke.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Columns cols={2}>
-<Card title="Light Token">
-<LightApproveRust />
-<LightRevokeRust />
-</Card>
-<Card title="SPL">
-```rust
-use spl_token::instruction::{approve, revoke};
-
-let ix = approve(
-    &spl_token::id(),
-    &source,
-    &delegate,
-    &owner,
-    &[],
-    amount,
-)?;
-
-let ix = revoke(
-    &spl_token::id(),
-    &source,
-    &owner,
-    &[],
-)?;
-```
-</Card>
-</Columns>
+<Accordion title="AI prompt">
+<PromptRustFreezeThaw />
+</Accordion>
 
 ### Close token account
 
 Close an empty token account and reclaim lamports.
 
 > [Guide](/light-token/cookbook/close-token-account) |
-> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/close.rs) |
-> [Source](https://docs.rs/light-token-client)
+> [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/instructions/close.rs)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCloseRust />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::close_account;
 
 let ix = close_account(
@@ -637,22 +1072,11 @@ let ix = close_account(
     &[],
 )?;
 ```
-</Card>
 </Columns>
 
-### Wrap and unwrap
-
-Move tokens between SPL/Token 2022 and Light Token accounts.
-
-> [Guide](/light-token/cookbook/wrap-unwrap) |
-> [Example (wrap)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/wrap.rs) |
-> [Example (unwrap)](https://github.com/Lightprotocol/examples-light-token/blob/main/rust-client/actions/unwrap.rs) |
-> [Source](https://docs.rs/light-token-client)
-
-<Card title="Light Token (no SPL equivalent)">
-<LightWrapRust />
-<LightUnwrapRust />
-</Card>
+<Accordion title="AI prompt">
+<PromptRustClose />
+</Accordion>
 
 ---
 
@@ -669,11 +1093,8 @@ Create a rent-free mint account via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateMintCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::initialize_mint;
 
 let ix = initialize_mint(
@@ -686,8 +1107,11 @@ let ix = initialize_mint(
 
 invoke(&ix, &[mint, rent_sysvar])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiCreateMint />
+</Accordion>
 
 ### CreateAssociatedAccountCpi
 
@@ -698,11 +1122,8 @@ Create a rent-free associated token account via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateAtaCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_associated_token_account::instruction::create_associated_token_account;
 
 let ix = create_associated_token_account(
@@ -714,8 +1135,11 @@ let ix = create_associated_token_account(
 
 invoke(&ix, &[payer, owner, mint])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiCreateAta />
+</Accordion>
 
 ### CreateTokenAccountCpi
 
@@ -726,11 +1150,8 @@ Create a rent-free token account via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateTokenAccountCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::initialize_account;
 
 let ix = initialize_account(
@@ -742,8 +1163,11 @@ let ix = initialize_account(
 
 invoke(&ix, &[account, mint, owner])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiCreateTokenAccount />
+</Accordion>
 
 ### MintToCpi
 
@@ -754,11 +1178,8 @@ Mint tokens to a destination account via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightMintToCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::mint_to;
 
 let ix = mint_to(
@@ -772,23 +1193,23 @@ let ix = mint_to(
 
 invoke(&ix, &[mint, destination, authority])?;
 ```
-</Card>
 </Columns>
 
-### TransferCheckedCpi
+<Accordion title="AI prompt">
+<PromptCpiMintTo />
+</Accordion>
+
+### Transfer
 
 Transfer with decimal validation via CPI.
 
-> [Guide](/light-token/cookbook/transfer-checked) |
+> [Guide](/light-token/cookbook/transfer-interface) |
 > [Example](https://github.com/Lightprotocol/examples-light-token/blob/main/programs/anchor/basic-instructions/transfer-checked/src/lib.rs) |
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightTransferCheckedCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::transfer_checked;
 
 let ix = transfer_checked(
@@ -804,8 +1225,43 @@ let ix = transfer_checked(
 
 invoke(&ix, &[source, mint, destination, authority])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiTransferChecked />
+</Accordion>
+
+### TransferInterfaceCpi
+
+Transfer tokens across SPL, Token 2022, and Light Token accounts via CPI. The interface auto-detects the token type and routes to the correct program.
+
+> [Guide](/light-token/cookbook/transfer-interface) |
+> [Example](https://github.com/Lightprotocol/examples-light-token/tree/main/programs/anchor/basic-instructions/transfer-interface) |
+> [Source](https://docs.rs/light-token)
+
+<Columns cols={2}>
+<LightTransferInterfaceCpi />
+```rust title="SPL"
+use spl_token::instruction::transfer_checked;
+
+let ix = transfer_checked(
+    &spl_token::id(),
+    &source,
+    &mint,
+    &destination,
+    &authority,
+    &[],
+    amount,
+    decimals,
+)?;
+
+invoke(&ix, &[source, mint, destination, authority])?;
+```
+</Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiTransferInterface />
+</Accordion>
 
 ### BurnCpi
 
@@ -816,11 +1272,8 @@ Burn tokens via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightBurnCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::burn;
 
 let ix = burn(
@@ -834,8 +1287,11 @@ let ix = burn(
 
 invoke(&ix, &[source, mint, authority])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiBurn />
+</Accordion>
 
 ### FreezeCpi and ThawCpi
 
@@ -847,12 +1303,11 @@ Freeze or thaw a token account via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
+<div>
 <LightFreezeCpi />
 <LightThawCpi />
-</Card>
-<Card title="SPL">
-```rust
+</div>
+```rust title="SPL"
 use spl_token::instruction::{freeze_account, thaw_account};
 
 let ix = freeze_account(
@@ -865,8 +1320,11 @@ let ix = thaw_account(
 )?;
 invoke(&ix, &[account, mint, freeze_authority])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiFreezeThaw />
+</Accordion>
 
 ### ApproveCpi and RevokeCpi
 
@@ -878,12 +1336,11 @@ Approve a delegate or revoke permissions via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
+<div>
 <LightApproveCpi />
 <LightRevokeCpi />
-</Card>
-<Card title="SPL">
-```rust
+</div>
+```rust title="SPL"
 use spl_token::instruction::{approve, revoke};
 
 let ix = approve(
@@ -896,8 +1353,11 @@ let ix = revoke(
 )?;
 invoke(&ix, &[source, owner])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiApproveRevoke />
+</Accordion>
 
 ### CloseAccountCpi
 
@@ -908,11 +1368,8 @@ Close a token account and reclaim lamports via CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCloseCpi />
-</Card>
-<Card title="SPL">
-```rust
+```rust title="SPL"
 use spl_token::instruction::close_account;
 
 let ix = close_account(
@@ -920,8 +1377,11 @@ let ix = close_account(
 )?;
 invoke(&ix, &[account, destination, owner])?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptCpiClose />
+</Accordion>
 
 ---
 
@@ -936,11 +1396,8 @@ invoke(&ix, &[account, destination, owner])?;
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateMintMacro />
-</Card>
-<Card title="Anchor">
-```rust
+```rust title="Anchor"
 #[account(
     init,
     payer = fee_payer,
@@ -949,8 +1406,11 @@ invoke(&ix, &[account, destination, owner])?;
 )]
 pub mint: InterfaceAccount<'info, Mint>,
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptMacrosCreateMint />
+</Accordion>
 
 ### Create mint with metadata
 
@@ -961,11 +1421,8 @@ Metadata fields are declared inline instead of requiring a separate CPI.
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateMintMetadataMacro />
-</Card>
-<Card title="Anchor + Token 2022">
-```rust
+```rust title="Anchor"
 #[account(
     init,
     payer = fee_payer,
@@ -984,8 +1441,11 @@ token_metadata_initialize(
     params.uri,
 )?;
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptMacrosCreateMint />
+</Accordion>
 
 ### Create associated token account
 
@@ -994,11 +1454,8 @@ token_metadata_initialize(
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateAtaMacro />
-</Card>
-<Card title="Anchor">
-```rust
+```rust title="Anchor"
 #[account(
     init,
     payer = fee_payer,
@@ -1007,8 +1464,11 @@ token_metadata_initialize(
 )]
 pub ata: Account<'info, TokenAccount>,
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptMacrosCreateAta />
+</Accordion>
 
 ### Create token account (vault)
 
@@ -1017,11 +1477,8 @@ pub ata: Account<'info, TokenAccount>,
 > [Source](https://docs.rs/light-token)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightCreateTokenAccountMacro />
-</Card>
-<Card title="Anchor">
-```rust
+```rust title="Anchor"
 #[account(
     init,
     payer = fee_payer,
@@ -1030,8 +1487,11 @@ pub ata: Account<'info, TokenAccount>,
 )]
 pub vault: Account<'info, TokenAccount>,
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptMacrosCreateTokenAccount />
+</Accordion>
 
 ### Light-PDA init
 
@@ -1042,11 +1502,8 @@ Add `#[light_program]` above `#[program]`, derive `LightAccount` on state struct
 > [Source](https://docs.rs/light-account)
 
 <Columns cols={2}>
-<Card title="Light Token">
 <LightPdaMacro />
-</Card>
-<Card title="Anchor">
-```rust
+```rust title="Anchor"
 #[program]
 pub mod my_program {
     // instruction logic unchanged
@@ -1071,5 +1528,8 @@ pub struct Initialize<'info> {
     pub system_program: Program<'info, System>,
 }
 ```
-</Card>
 </Columns>
+
+<Accordion title="AI prompt">
+<PromptMacrosLightPda />
+</Accordion>
