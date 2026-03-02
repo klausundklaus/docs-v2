@@ -153,7 +153,6 @@
           {
             "group": "Resources",
             "pages": [
-              "resources/spl-to-light-reference",
               "resources/cli",
               "resources/migration-v1-to-v2",
               "resources/addresses-and-urls",
@@ -178,6 +177,12 @@
             "group": "SDK",
             "pages": [
               "api-reference/sdk"
+            ]
+          },
+          {
+            "group": "Solana to Light",
+            "pages": [
+              "api-reference/solana-to-light-comparison"
             ]
           },
           {
