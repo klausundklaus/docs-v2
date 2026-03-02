@@ -6,7 +6,6 @@ keywords: ["rent free tokens on solana", "rent sponsorship solana", "rent exempt
 
 import TransferInstructionCode from "/snippets/code-snippets/light-token/sponsor-rent-top-ups/ts-instruction.mdx";
 import RustInstructionCode from "/snippets/code-snippets/light-token/sponsor-rent-top-ups/rust-instruction.mdx";
-import ToolkitsSetup from "/snippets/setup/toolkits-setup.mdx";
 import RentSponsorshipExplained from "/snippets/rent-sponsorship-explained.mdx";
 
 ---
@@ -20,12 +19,10 @@ This is dealt with under the hood in a way that doesn’t disrupt the UX of what
 
 ## How to use Sponsored Rent Top-Ups for Accounts and Transfers
 
-To sponsor top-ups for other users, set the `feePayer` field to the public key of the account that will pay the top-ups.
-Any account that signs the transaction can be the fee payer, which enables rent top-up sponsorship for Solana.
-The following example shows how to transfer a token from one user to another and sponsor the top-up for the transaction.
+To sponsor rent top-ups for your users, set the `payer` parameter to the sponsor's public key when calling `createTransferInterfaceInstructions` (TypeScript) or building a `TransferInterface` instruction (Rust). The sponsor pays SOL for any rent top-ups while the user only signs to authorize the transfer.
 
 <Info>
-You can set the fee payer to any signing account on any transaction with Light Token.
+You can set the payer to any signing account on any Light Token transaction.
 </Info>
 
 <Tabs>
@@ -36,3 +33,4 @@ You can set the fee payer to any signing account on any transaction with Light T
 <RustInstructionCode />
 </Tab>
 </Tabs>
+
