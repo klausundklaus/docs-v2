@@ -5,6 +5,26 @@ description: "Latest Releases"
 rss: true
 ---
 
+<Update label="Devnet Registry v2.3.1" description="March 2026">
+
+### light-registry v2.3.1 (Devnet)
+
+`light-registry` v2.3.1 deployed to devnet.
+
+**New**: `batch_append()` and `batch_update_address_tree()` reimburse the forester fee payer for network fees. `batch_append` transfers 2x network_fee from the output queue; `batch_update_address_tree` transfers 1x. Reimbursement occurs when network_fee >= 5,000 lamports. A `fee_payer` account is required in both instructions. (#2335)
+
+**New**: `nullify_dedup` instruction batches 2-4 nullifications in one transaction using proof deduplication.
+
+**New**: `nullify_2` uses a shared proof node and a 1-byte discriminator.
+
+**New**: Forester dedup integration with `min_queue_items` threshold, versioned transactions, and a transaction size fix.
+
+**New**: V1 state multi-nullify is disabled when the queue exceeds 10,000 items.
+
+**Fix**: `count_from_leaf_indices()` rejects non-trailing sentinels.
+
+</Update>
+
 <Update label="Programs March 2026" description="March 2026">
 
 <Warning>
